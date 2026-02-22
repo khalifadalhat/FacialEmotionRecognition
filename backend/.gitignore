@@ -1,7 +1,16 @@
-
+# Python virtual environments
 venv/
 .venv/
-ENV/
 env/
-*.pyc
+ENV/
+.env/
+
+# Bytecode
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
