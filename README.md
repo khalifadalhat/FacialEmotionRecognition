@@ -339,7 +339,7 @@ Camera Frame (base64)
 
 | Welcome | Camera Result 1 | Camera Result 2 |
 |---------|--------| --------|
-| ![Welcome](https://github.com/user-attachments/assets/f072d4f3-ff8f-4c35-9c0a-840d4dcd5b56) | ![Camera](assets/screenshots/camera1.jpeg) | ![Camera](assets/screenshots/camera2.jpeg) |
+| ![Welcome](https://github.com/user-attachments/assets/f072d4f3-ff8f-4c35-9c0a-840d4dcd5b56) | ![Camera](https://github.com/user-attachments/assets/9c335156-45a5-4e88-9483-a4bc7c5718da) | ![Camera](https://github.com/user-attachments/assets/ef7a67dd-3fe4-4114-bdeb-e9c702505de7) |
 ```
 
 ## ⚙️ Configuration
