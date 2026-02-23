@@ -235,7 +235,7 @@ Scan the QR code with **Expo Go** on your phone, or press `i` for iOS simulator 
 The app uses two different Redux patterns depending on the camera mode:
 
 **Real-time mode → Redux Thunk (`emotionSlice.ts`)**
-- Fires every 1.5 seconds via `setInterval`
+- Fires every 5 seconds via `setInterval`
 - Uses an `isAnalyzing` ref to prevent overlapping requests
 - Low quality (0.3) for faster uploads
 - Cleans up automatically on mode switch or screen exit
