@@ -36,7 +36,9 @@ FacialEmotionRecognition/
 │   └── package.json
 │
 └── backend/                   # FastAPI server
-    └── main.py                # Emotion analysis API
+    └── app               
+        └── main.py              # Emotion analysis API
+    └── Dockerfile                # Dockerfile
 ```
 
 ---
@@ -59,6 +61,7 @@ FacialEmotionRecognition/
 
 ```bash
 cd backend
+cd app
 ```
 
 ### 2. Create and activate a virtual environment
@@ -82,6 +85,74 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 > The `--host 0.0.0.0` flag is required so your mobile device can reach the server over your local network.
+
+---
+
+## 🐳 Backend — Docker Setup (Recommended for Deployment)
+
+Instead of running the server locally with Python, you can use Docker. This is the recommended approach for deploying to platforms like **Render**, **Railway**, or **Fly.io**.
+
+### Dockerfile
+
+```dockerfile
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    libgl1 \
+    libglib2.0-0 \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade pip
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+### Build and run locally with Docker
+
+```bash
+# Build the image
+docker build -t facial-emotion-api .
+
+# Run the container
+docker run -p 8000:8000 facial-emotion-api
+```
+
+### Deploy to Render
+
+1. Push your backend to a GitHub repository
+2. Go to [render.com](https://render.com) and create a new **Web Service**
+3. Connect your GitHub repo
+4. Set the following:
+
+| Setting | Value |
+|---------|-------|
+| Environment | Docker |
+| Dockerfile path | `./Dockerfile` |
+| Port | `8000` |
+
+5. Click **Deploy** — Render will build the Docker image and start the server
+6. Copy your Render URL (e.g. `https://your-app.onrender.com`) and add it to your frontend `.env`:
+
+```bash
+EXPO_PUBLIC_API_URL=https://your-app.onrender.com
+```
+
+> ⚠️ Note: Render's free tier spins down after inactivity. The first request after a cold start may take 30–60 seconds while DeepFace downloads model weights.
+
+---
 
 ### 5. Verify it's running
 
