@@ -264,6 +264,13 @@ Camera Frame (base64)
 
 ---
 
+## 📱 Screenshots
+
+| Welcome | Camera Result 1 | Camera Result 2 |
+|---------|--------| --------|
+| ![Welcome](assets/screenshots/welcome.png) | ![Camera](assets/screenshots/camera1.jpeg) | ![Camera](assets/screenshots/camera2.jpeg) |
+```
+
 ## ⚙️ Configuration
 
 ### Adjusting real-time interval
